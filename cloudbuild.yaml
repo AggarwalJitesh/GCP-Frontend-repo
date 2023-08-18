@@ -11,7 +11,8 @@ steps:
     args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/block-convey-p1/IMAGE_1:$SHORT_SHA', '.']
+    args: ['build', '-t', 'asia.gcr.io/block-convey-p1/IMAGE_1', '.']
+    images: ['asia.gcr.io/block-convey-p1/IMAGE_1']
 
 substitutions:
   _BUCKET_NAME: configbuckett
