@@ -9,6 +9,9 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/block-convey-p1/IMAGE_1:$SHORT_SHA', '.']
 
 substitutions:
   _BUCKET_NAME: configbuckett
