@@ -11,7 +11,6 @@ function Home() {
   return (
     <div>
       <Navigation />
-      <h1>looo</h1>
       <div>
         <div className="jumbotron jumbotron-fluid banner1">
           <p className="fs-2 ban1text">
