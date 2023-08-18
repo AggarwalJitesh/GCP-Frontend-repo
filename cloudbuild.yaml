@@ -16,6 +16,3 @@ steps:
 substitutions:
   _BUCKET_NAME: configbuckett
 
-
-images:
-  - 'gcr.io/block-convey-p1/IMAGE_1'
