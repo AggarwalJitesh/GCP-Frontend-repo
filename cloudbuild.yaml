@@ -10,11 +10,17 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
   
+  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'asia.gcr.io-docker.pkg.dev/block-convey-p1/img', '.' ]
-  images: ['asia.gcr.io-docker.pkg.dev/block-convey-p1/img']
-    # images: ['asia.gcr.io/block-convey-p1/IMAGE_1']
+    args: [ 'build', '-t','asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}', '.' ]
+          
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
 substitutions:
   _BUCKET_NAME: configbuckett
+
+images:
+  - asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}
 
