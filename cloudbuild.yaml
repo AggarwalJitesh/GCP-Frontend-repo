@@ -18,6 +18,19 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - "set"
+      - "image"
+      - "deployment/my-app"
+      - "my-app=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app"
+      - "--record=true"
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      - "rollout"
+      - "status"
+      - "deployment/my-app"
+
 substitutions:
   _BUCKET_NAME: configbuckett
 
