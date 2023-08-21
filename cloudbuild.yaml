@@ -23,14 +23,8 @@ steps:
   #   args: ['pull', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
   # Deploy to GKE
-  - name: 'gcr.io/cloud-builders/gke-deploy'
-    args: [
-      'deploy',
-      'configbuckett',
-      'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}',
-      'asia-south1',
-      'autopilot-cluster-1',
-    ]
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'deployment.yaml']
 
 substitutions:
   _BUCKET_NAME: configbuckett

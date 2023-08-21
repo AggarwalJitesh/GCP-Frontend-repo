@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: react-app-deployment
 spec:
-  replicas: 1 # Number of desired pods
+  replicas: 2 # Number of desired pods
   selector:
     matchLabels:
       app: react-app
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}
+          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:dc404ca
           ports:
             - containerPort: 80 # Port your React app listens on
