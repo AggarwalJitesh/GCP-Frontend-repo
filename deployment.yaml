@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app-deployment
+spec:
+  replicas: 1 # Number of desired pods
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app-container
+          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}
+          ports:
+            - containerPort: 80 # Port your React app listens on
