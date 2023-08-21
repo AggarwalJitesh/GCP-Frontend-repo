@@ -25,7 +25,7 @@ steps:
       - "deployment/my-app"
       - "my-app=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app"
       - "--record=true"
-  - name: "gcr.io/cloud-builders/kubectl"
+  - name: "gcr.io/cloud-builders/autopilot-cluster-1"
     args:
       - "rollout"
       - "status"
