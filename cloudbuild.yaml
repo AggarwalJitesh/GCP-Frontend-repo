@@ -18,18 +18,18 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
-    # Pull Docker image from Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['pull', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
+  #   # Pull Docker image from Artifact Registry
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: ['pull', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
   # Deploy to GKE
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args: [
-      'run',
+      'deploy',
       'react-app-deployment',
-      '--image=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}',
-      '--location= asia-south1',
-      '--cluster=autopilot-cluster-1',
+      'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}',
+      'asia-south1',
+      'autopilot-cluster-1',
     ]
 
 substitutions:
