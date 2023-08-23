@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:dc404ca
+          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
           ports:
             - containerPort: 80 # Port your React app listens on

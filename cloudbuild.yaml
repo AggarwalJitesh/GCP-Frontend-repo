@@ -30,6 +30,13 @@ steps:
     - --location=asia-south1
     - --cluster=autopilot-cluster-1
 
+    - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=service.yaml
+    - --location=asia-south1
+    - --cluster=autopilot-cluster-1
+
 
 
   # - name: 'gcr.io/cloud-builders/kubectl'
