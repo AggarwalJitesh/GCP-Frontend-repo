@@ -45,5 +45,5 @@ substitutions:
   _BUCKET_NAME: configbuckett
 
 images:
-  - asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}
+  - asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
 
