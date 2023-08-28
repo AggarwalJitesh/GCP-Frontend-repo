@@ -18,10 +18,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
-  #   # Pull Docker image from Artifact Registry
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args: ['pull', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
-
   # deploy container image to GKE
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:

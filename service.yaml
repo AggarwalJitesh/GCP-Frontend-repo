@@ -7,8 +7,8 @@ spec:
     app: react-app
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: NodePort
+      # port: 80
+      # targetPort: 80
+  type: LoadBalancer
   
   # LoadBalancer
