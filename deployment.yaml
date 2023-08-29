@@ -6,7 +6,7 @@ metadata:
   labels:
     app: "react-app"
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: "react-app"
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: "react-app-container"
-          image: "asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest"
+          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
           # ports:
           #   - containerPort: 80
 
@@ -27,7 +27,7 @@ spec:
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "react-app-hpa-eawk"
+  name: "react-app-HorizontalPodAutoscaler"
   namespace: "default"
   labels:
     app: "react-app"
@@ -37,7 +37,7 @@ spec:
     name: "react-app"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 3
   metrics:
   - type: "Resource"
     resource:

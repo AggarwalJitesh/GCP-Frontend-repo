@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: react-app-service
 spec:
-  type: LoadBalancer
+  type: Load balancer
   selector:
     app: simple-app
   ports:
-    - port: 4000
-      targetPort: 4000
+    - port: 80
       protocol: TCP
 
       # protocol: TCP
@@ -16,6 +15,25 @@ spec:
 
 
 
+
+
+
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "nginx-1-service"
+  namespace: "default"
+  labels:
+    app: "nginx-1"
+spec:
+  ports:
+  - protocol: "TCP"
+    port: 80
+  selector:
+    app: "nginx-1"
+  type: "LoadBalancer"
+  loadBalancerIP: ""
 
 
 
