@@ -11,6 +11,8 @@ spec:
       targetPort: 4000
       protocol: TCP
 
+      # protocol: TCP
+
 
 
 
