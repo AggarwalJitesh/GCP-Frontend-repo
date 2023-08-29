@@ -1,19 +1,47 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
-  name: react-app-deployment
+  name: "react-app-deployment"
+  namespace: "default"
+  labels:
+    app: "react-app"
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: react-app
+      app: "react-app"
   template:
     metadata:
       labels:
-        app: react-app
+        app: "react-app"
     spec:
       containers:
-        - name: react-app-container
-          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
-          ports:
-            - containerPort: 80
+        - name: "react-app-container"
+          image: "asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest"
+          # ports:
+          #   - containerPort: 80
+
+
+---
+
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "react-app-hpa-eawk"
+  namespace: "default"
+  labels:
+    app: "react-app"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "react-app"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      target:
+        type: "Utilization"
+        averageUtilization: 80
