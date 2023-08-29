@@ -27,7 +27,7 @@ spec:
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "react-app-HorizontalPodAutoscaler"
+  name: "react-app-hpa"
   namespace: "default"
   labels:
     app: "react-app"
