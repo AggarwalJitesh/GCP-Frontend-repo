@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: react-app-container
-          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
+          image: asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:c654186
           resources:
             limits:
               memory: 200Mi
