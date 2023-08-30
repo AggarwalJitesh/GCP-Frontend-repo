@@ -29,27 +29,24 @@ spec:
           ports:
             - containerPort: 80
 
-
-# ---
-
-# apiVersion: "autoscaling/v2"
-# kind: "HorizontalPodAutoscaler"
-# metadata:
-#   name: "react-app-hpa"
-#   namespace: "default"
-#   labels:
-#     app: "react-app"
-# spec:
-#   scaleTargetRef:
-#     kind: "Deployment"
-#     name: "react-app"
-#     apiVersion: "apps/v1"
-#   minReplicas: 1
-#   maxReplicas: 3
-#   metrics:
-#   - type: "Resource"
-#     resource:
-#       name: "cpu"
-#       target:
-#         type: "Utilization"
-#         averageUtilization: 80
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "react-app-hpa"
+  namespace: "default"
+  labels:
+    app: "react-app"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "react-app"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      target:
+        type: "Utilization"
+        averageUtilization: 80
