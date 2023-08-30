@@ -23,6 +23,7 @@ steps:
     args:
     - run
     - --filename=deployment.yaml
+    - --image=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:latest
     - --location=asia-south1
     - --cluster=autopilot-cluster-1
 
