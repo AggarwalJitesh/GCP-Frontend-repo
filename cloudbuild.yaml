@@ -1,14 +1,14 @@
 steps:
- - name: 'gcr.io/cloud-builders/npm'
-   args: ['install']
-   timeout: '600s'  # Adjust timeout as needed
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+    timeout: '600s'  # Adjust timeout as needed
 
- - name: 'gcr.io/cloud-builders/npm'
-   args: ['run', 'build']
-   timeout: '600s'  # Adjust timeout as needed
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+    timeout: '600s'  # Adjust timeout as needed
 
- - name: 'gcr.io/cloud-builders/gsutil'
-   args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
   
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
