@@ -11,10 +11,13 @@ RUN npm run build
 # Nginx Block
 
 FROM nginx:1.23-alpine
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=nodework /app/build .
-ENTRYPOINT [ "nginx" , "-g" , "daemon off ;" ]
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=nodework /app/build /usr/share/nginx/html
+
+# WORKDIR /usr/share/nginx/html
+# RUN rm -rf ./*
+
+# ENTRYPOINT [ "nginx" , "-g" , "daemon off ;" ]
 
 
 

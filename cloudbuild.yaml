@@ -1,14 +1,14 @@
 steps:
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['install']
-  #   timeout: '600s'  # Adjust timeout as needed
+ - name: 'gcr.io/cloud-builders/npm'
+   args: ['install']
+   timeout: '600s'  # Adjust timeout as needed
 
-  # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['run', 'build']
-  #   timeout: '600s'  # Adjust timeout as needed
+ - name: 'gcr.io/cloud-builders/npm'
+   args: ['run', 'build']
+   timeout: '600s'  # Adjust timeout as needed
 
-  # - name: 'gcr.io/cloud-builders/gsutil'
-  #   args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
+ - name: 'gcr.io/cloud-builders/gsutil'
+   args: ['-m', 'rsync', '-r', 'build/', 'gs://configbuckett']
   
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
@@ -19,13 +19,13 @@ steps:
     args: ['push', 'asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app:${SHORT_SHA}']
 
   # deploy container image to GKE
-  - name: "gcr.io/cloud-builders/gke-deploy"
-    args:
-    - run
-    - --filename=deployment.yaml
-    # - --image=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app
-    - --location=asia-south1
-    - --cluster=autopilot-cluster-1
+  # - name: "gcr.io/cloud-builders/gke-deploy"
+  #   args:
+  #   - run
+  #   - --filename=deployment.yaml
+  #   # - --image=asia-south1-docker.pkg.dev/block-convey-p1/react-repo/my-app
+  #   - --location=asia-south1
+  #   - --cluster=autopilot-cluster-1
 
     # - name: "gcr.io/cloud-builders/gke-deploy"
     # args:
