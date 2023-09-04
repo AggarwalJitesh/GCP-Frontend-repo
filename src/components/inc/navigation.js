@@ -23,7 +23,7 @@ function Navigation() {
           className="text-white navbar-brand navtext"
           style={{ textDecoration: "none" }}
         >
-          PredicativeTechnology
+          Block Convey
         </Link>
         <button
           className="navbar-toggler"
