@@ -1,130 +1,83 @@
 function Footer() {
   return (
     <footer
-      class="text-center text-lg-start text-white"
+      className="text-center text-lg-start text-white"
       style={{ backgroundColor: "rgb(3, 3, 19)" }}
     >
-      <div class="container p-4 pb-0">
-        <section class="">
-          <div class="row">
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">
+      <div className="container p-4 pb-0">
+        <section className>
+          <div className="row">
+            <div className="col-md-8 col-lg-8 col-xl-8 mt-3 pr-4">
+              <h6 className="text-uppercase mb-4 font-weight-bold">
                 Block Convey
               </h6>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+                <small>
+                  At Block Convey, we are a dedicated team of blockchain
+                  enthusiasts and technology experts, committed to helping
+                  businesses leverage the power of blockchain to drive growth
+                  and innovation. We provide comprehensive blockchain solutions
+                  tailored to meet the unique needs of our clients across
+                  various industries.
+                </small>
               </p>
             </div>
-
-            <hr class="w-100 clearfix d-md-none" />
-
-            {/* <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <hr className="w-100 clearfix d-md-none" />
+            <hr className="w-100 clearfix d-md-none" />
+            <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
               <p>
-                <a class="text-white">MDBootstrap</a>
+                <i className="fa fa-home mr-3" /> New York, NY 10012, US
               </p>
               <p>
-                <a class="text-white">MDWordPress</a>
+                <i className="fa fa-envelope mr-3" />{" "}
+                <a href="mailto: info@blockconvey.com"> info@blockconvey.com</a>
               </p>
               <p>
-                <a class="text-white">BrandFlow</a>
-              </p>
-              <p>
-                <a class="text-white">Bootstrap Angular</a>
-              </p>
-            </div> */}
-
-            <hr class="w-100 clearfix d-md-none" />
-
-            {/* <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-              <p>
-                <a class="text-white">Your Account</a>
-              </p>
-              <p>
-                <a class="text-white">Become an Affiliate</a>
-              </p>
-              <p>
-                <a class="text-white">Shipping Rates</a>
-              </p>
-              <p>
-                <a class="text-white">Help</a>
-              </p>
-            </div> */}
-
-            <hr class="w-100 clearfix d-md-none" />
-
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-              <p>
-                <i class="fas fa-home mr-3"></i> New York, NY 10012, US
-              </p>
-              <p>
-                <i class="fas fa-envelope mr-3"></i> info@blockconvey.com
-              </p>
-              <p>
-                <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+                <i className="fa fa-phone mr-3" />{" "}
+                <a href="tel:+ 01 234 567 88"> + 01 234 567 88</a>
               </p>
             </div>
           </div>
         </section>
-
-        <hr class="my-3" />
-
-        <section class="p-3 pt-0">
-          <div class="row d-flex align-items-center">
-            <div class="col-md-7 col-lg-8 text-center text-md-start">
-              <div class="p-3">
+        <hr className="my-3" />
+        <section className="p-3 pt-0">
+          <div className="row d-flex align-items-center">
+            <div className="col-md-7 col-lg-8 text-center text-md-start">
+              <div className="p-3">
                 <small>
-                  {" "}
-                  © 2023 Copyright:{" "}
-                  <a
-                    className="footlink"
-                    href="file:///C:/Users/shrad/OneDrive/Documents/VIT%20Summer%20vacay/Block%20Convey/index.html"
-                  >
-                    www.predicativetechnology.com
+                  © 2023 Copyright:
+                  <a classname="footlink" href="https://www.blockconvey.com/">
+                    www.blockconvey.com
                   </a>
                   . All rights reserved.
-                  <br />
-                  An affiliate of{" "}
-                  <a className="footlink" href="https://www.blockconvey.com/">
-                    Block Convey, LLC{" "}
-                  </a>
-                  .{" "}
                 </small>
               </div>
             </div>
-
-            {/* <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end ">
               <a
-                class="btn btn-outline-light btn-floating m-1 text-white"
+                href="https://www.linkedin.com/company/block-convey-llc
+      "
+                className="btn m-1"
                 role="button"
               >
-                <i class="fab fa-facebook-f"></i>
+                <i className="fa fa-linkedin-square" style={{ fontSize: 36 }} />
               </a>
-
               <a
-                class="btn btn-outline-light btn-floating m-1 text-white"
+                href="https://twitter.com/blockconvey?s=20"
+                className="btn m-1"
                 role="button"
               >
-                <i class="fab fa-twitter"></i>
+                <i className="fa fa-twitter" style={{ fontSize: 36 }} />
               </a>
-
               <a
-                class="btn btn-outline-light btn-floating m-1 text-white"
+                href="https://www.threads.net/@blockconvey?igshid=MzRlODBiNWFlZA%3D%3D"
+                className="btn m-1 "
                 role="button"
               >
-                <i class="fab fa-google"></i>
+                <i className="fa fa-instagram" style={{ fontSize: 36 }} />
               </a>
-
-              <a
-                class="btn btn-outline-light btn-floating m-1 text-white"
-                role="button"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div> */}
+            </div>
           </div>
         </section>
       </div>

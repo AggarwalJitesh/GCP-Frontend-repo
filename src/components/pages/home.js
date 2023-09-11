@@ -20,7 +20,7 @@ function Home() {
           </p>
         </div>
         <img
-          src={require("../images/Ellipse 1.png")}
+          src={require("../images/Ellipse.png")}
           class="rounded-circle mx-auto d-block homeimg mt-n3"
         />
         <br />
@@ -70,7 +70,7 @@ function Home() {
               <div className="col-md-4">
                 <div className="card align-items-center">
                   <img
-                    src={require("../images/Ellipse 3.png")}
+                    src={require("../images/Ellipse 1.jpeg")}
                     className="card-img-top"
                     alt="..."
                   />
@@ -88,7 +88,7 @@ function Home() {
               <div className="col-md-4">
                 <div className="card align-items-center" style={{}}>
                   <img
-                    src={require("../images/Ellipse 4.png")}
+                    src={require("../images/Ellipse 2.jpeg")}
                     className="card-img-top"
                     alt="..."
                   />
@@ -107,7 +107,7 @@ function Home() {
               <div className="col-md-4">
                 <div className="card align-items-center">
                   <img
-                    src={require("../images/Ellipse 5.png")}
+                    src={require("../images/Ellipse 3.jpeg")}
                     className="card-img-top"
                     alt="..."
                   />
@@ -127,7 +127,7 @@ function Home() {
               <div className="col-md-4">
                 <div className="card align-items-center">
                   <img
-                    src={require("../images/Ellipse 6.png")}
+                    src={require("../images/Ellipse 4.jpeg")}
                     className="card-img-top"
                     alt="..."
                   />
@@ -146,7 +146,7 @@ function Home() {
               <div className="col-md-4">
                 <div className="card align-items-center">
                   <img
-                    src={require("../images/Ellipse 7.png")}
+                    src={require("../images/Ellipse 5.jpg")}
                     className="card-img-top"
                     alt="..."
                   />
