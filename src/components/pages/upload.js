@@ -6,10 +6,6 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Footer from "../inc/footer";
 
-import * as tf from "@tensorflow/tfjs";
-import * as automl from "@tensorflow/tfjs-automl";
-import * as modelJSON from "./model-6445255798162456576_tf-js_2023-09-11T04_55_16.676712Z_model.json";
-
 import "bootstrap/dist/css/bootstrap.css";
 import Navigation from "../inc/navigation";
 
@@ -23,31 +19,22 @@ function Upload() {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleUpload = async () => {
-    // const model = await tf.loadGraphModel(modelJSON);
-    // // const image = document.getElementById('output');
-    // const predictions = await model.classify(selectedFile);
-    // console.log(predictions);
-    // setResult(predictions);
-    // const pre = document.getElementById('result');
-    // pre.textContent = JSON.stringify(predictions, null, 2);
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("image", selectedFile);
 
-
-    // const formData = new FormData();
-    // formData.append("image", selectedFile);
-
-    // fetch("http://127.0.0.1:5000/upload", {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setResult(data.message);
-    //     console.log(data); // You can handle the response from the backend here
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+    fetch("http://127.0.0.1:5000/upload", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setResult(data.message);
+        console.log(data); // You can handle the response from the backend here
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
