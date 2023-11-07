@@ -23,7 +23,9 @@ function Upload() {
     const formData = new FormData();
     formData.append("image", selectedFile);
 
-    fetch("http://127.0.0.1:5000/upload", {
+    // fetch("http://127.0.0.1:8080/upload", {
+
+    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/upload", {
       method: "POST",
       body: formData,
     })
