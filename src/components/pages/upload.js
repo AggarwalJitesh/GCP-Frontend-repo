@@ -25,7 +25,9 @@ function Upload() {
 
     // fetch("http://127.0.0.1:8080/upload", {
 
-    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/upload", {
+      // 35.223.148.15 
+
+    fetch("http://127.0.0.1:8000/classify", {
       method: "POST",
       body: formData,
     })
