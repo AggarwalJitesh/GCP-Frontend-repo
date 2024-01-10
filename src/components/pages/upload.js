@@ -1,33 +1,54 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import Footer from "../inc/footer";
+import "../pagesCSS/UploadCSS.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 import Navigation from "../inc/navigation";
 
-function Upload() {
+import React, { useState } from "react";
+import {
+  Button,
+  Modal,
+  ProgressBar,
+  Form,
+  Col,
+  Row,
+  Image,
+} from "react-bootstrap";
+
+const ImageUploadComponent = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  // ImageURL -- selectedImage
+
+  const [progress, setProgress] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [result, setResult] = useState(null);
-  const [ImageURL, setImageURL] = useState(null);
 
-  const handleFileChange = (event) => {
-    setImageURL(URL.createObjectURL(event.target.files[0]));
-    setSelectedFile(event.target.files[0]);
+  const handleImageChange = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      setSelectedImage(URL.createObjectURL(event.target.files[0]));
+      setSelectedFile(event.target.files[0]);
+    }
   };
 
-  const handleUpload = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress === 100) {
+          clearInterval(interval);
+          setShowModal(true);
+          return 100;
+        }
+        return Math.min(prevProgress + 10, 100);
+      });
+    }, 200);
+
     const formData = new FormData();
     formData.append("image", selectedFile);
 
-    // fetch("http://127.0.0.1:8080/upload", {
-
-      // 35.223.148.15 
-
-    // fetch("http://127.0.0.1:8000/classify", {
     fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
       method: "POST",
       body: formData,
@@ -42,47 +63,45 @@ function Upload() {
       });
   };
 
-  return (
-    <div class=" banner1">
-      <Navigation />
-      <div class="container text-center ">
-        <div class="row">
-          <div class="col">
-            <input
-              class="form-control form-control-lg w-25 mt-5"
-              type="file"
-              onChange={handleFileChange}
-            />
-          </div>
-        </div>
-        <div class="row w-25">
-          <div class="col">
-            <button
-              type="button"
-              class="btn btn-outline-info btn-lg mt-4"
-              onClick={handleUpload}
-            >
-              Upload Image{" "}
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col align-self-center mt-4">
-            <img
-              src={ImageURL}
-              style={{
-                width: "50vh",
-                height: "50vh",
-              }}
-            />
-          </div>
-          <div class="col align-self-center">
-            <h4>{result}</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+  const handleCloseModal = () => setShowModal(false);
 
-export default Upload;
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Navigation />
+      <Row>
+        <Col md={6}>
+          {selectedImage && (
+            <Image src={selectedImage} alt="Preview" thumbnail />
+          )}
+        </Col>
+        <Col md={6}>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Choose Image</Form.Label>
+            <Form.Control type="file" onChange={handleImageChange} />
+          </Form.Group>
+          <ProgressBar now={progress} label={`${progress}%`} />
+          <Button variant="primary" type="submit" className="mt-3">
+            Submit
+          </Button>
+        </Col>
+      </Row>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Image Upload</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{result}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleCloseModal}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Form>
+  );
+};
+
+export default ImageUploadComponent;
