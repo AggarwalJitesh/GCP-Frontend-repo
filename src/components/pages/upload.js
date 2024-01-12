@@ -66,7 +66,7 @@ const ImageUploadComponent = () => {
   const handleCloseModal = () => setShowModal(false);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="contdisplay">
       <Navigation />
       <Row>
         <Col md={6}>
@@ -75,9 +75,13 @@ const ImageUploadComponent = () => {
           )}
         </Col>
         <Col md={6}>
-          <Form.Group controlId="formFile" className="mb-3">
-            <Form.Label>Choose Image</Form.Label>
-            <Form.Control type="file" onChange={handleImageChange} />
+          <Form.Group controlId="formFile" className="updform mb-3">
+            <Form.Label>Upload an Image</Form.Label>
+            <Form.Control
+              className="upldfl"
+              type="file"
+              onChange={handleImageChange}
+            />
           </Form.Group>
           <ProgressBar now={progress} label={`${progress}%`} />
           <Button variant="primary" type="submit" className="mt-3">
@@ -88,15 +92,12 @@ const ImageUploadComponent = () => {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Image Upload</Modal.Title>
+          <Modal.Title>Image Classification Result</Modal.Title>
         </Modal.Header>
         <Modal.Body>{result}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
           <Button variant="primary" onClick={handleCloseModal}>
-            Save Changes
+            Add to Blockchain
           </Button>
         </Modal.Footer>
       </Modal>

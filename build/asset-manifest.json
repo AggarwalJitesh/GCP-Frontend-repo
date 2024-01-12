@@ -1,23 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6b29b3c2.css",
-    "main.js": "/static/js/main.38fa8560.js",
+    "main.css": "/static/css/main.5d1838bf.css",
+    "main.js": "/static/js/main.8ffe008a.js",
     "static/js/787.91197863.chunk.js": "/static/js/787.91197863.chunk.js",
-    "static/media/Ellipse 1.png": "/static/media/Ellipse 1.41d6027bcaabebd6d9be.png",
+    "static/media/Ellipse 5.jpg": "/static/media/Ellipse 5.02712a979985aa6aaf88.jpg",
+    "static/media/Ellipse 3.jpeg": "/static/media/Ellipse 3.4fa73f152b23a7cdb206.jpeg",
+    "static/media/Ellipse.png": "/static/media/Ellipse.41d6027bcaabebd6d9be.png",
     "static/media/researcher.jpg": "/static/media/researcher.990c9cb3299a3fc1f777.jpg",
-    "static/media/Ellipse 3.png": "/static/media/Ellipse 3.18545b6de400e3790fb2.png",
-    "static/media/Ellipse 6.png": "/static/media/Ellipse 6.615696c5a21029c640ff.png",
-    "static/media/Ellipse 5.png": "/static/media/Ellipse 5.d95d3726e869ee4cea61.png",
-    "static/media/Ellipse 7.png": "/static/media/Ellipse 7.c3d4d611b3adb30f4918.png",
     "static/media/logo.png": "/static/media/logo.5d87d89cbc6f2422523d.png",
-    "static/media/Ellipse 4.png": "/static/media/Ellipse 4.3a9ddcc05840630cffe0.png",
     "index.html": "/index.html",
-    "main.6b29b3c2.css.map": "/static/css/main.6b29b3c2.css.map",
-    "main.38fa8560.js.map": "/static/js/main.38fa8560.js.map",
+    "main.5d1838bf.css.map": "/static/css/main.5d1838bf.css.map",
+    "main.8ffe008a.js.map": "/static/js/main.8ffe008a.js.map",
     "787.91197863.chunk.js.map": "/static/js/787.91197863.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b29b3c2.css",
-    "static/js/main.38fa8560.js"
+    "static/css/main.5d1838bf.css",
+    "static/js/main.8ffe008a.js"
   ]
 }

@@ -1,11 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
+
+
+
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+const firebaseConfig = {
+  apiKey: "AIzaSyClyy-UCkLKvvoiH2N-UssJTMdIpicEkUg",
+  authDomain: "sign-up-database-e34dd.firebaseapp.com",
+  projectId: "sign-up-database-e34dd",
+  storageBucket: "sign-up-database-e34dd.appspot.com",
+  messagingSenderId: "62170094234",
+  appId: "1:62170094234:web:be4ee32f7be146e77f5d23",
+  measurementId: "G-GNZ5MRF22Y",
+};
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 function Login() {
-  const navigate = useNavigate();
-
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -31,33 +46,11 @@ function Login() {
     if (Object.keys(formErrors).length === 0) {
       console.log(formValues["username"]);
       console.log(isSubmit);
-      sendDataToFlask(formValues);
-      navigate("/dashboard", { state: { username: formValues["username"] } });
+      sendDataToFire(formValues);
     }
   };
 
-  const sendDataToFlask = async (formData) => {
-    const url = "http://127.0.0.1:5000/add";
-    const requestBody = new URLSearchParams(formData).toString();
-
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      },
-      body: requestBody,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Process the response data here
-        console.log(data);
-      })
-      .catch((error) => {
-        // Handle error here
-        console.error("Error:", error);
-      });
-  };
-
+  // validate function
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -79,31 +72,25 @@ function Login() {
     return errors;
   };
 
+  const db = getFirestore();
+  const myCollectionRef = collection(db, "myCollection"); 
+
+
+  // send data to firesbase
+  const sendDataToFire = async (formData) => {
+    await addDoc(myCollectionRef, { formData });
+  };
+
   return (
     <div>
       <Container>
-        {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
-          <Link
-            to={{
-              pathname: "/dashboard",
-              prop: formValues["username"],
-            }}
-          >
-            ddwdd
-          </Link>
-        ) : (
-          <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
-        )} */}
-
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
             <div className="border border-3 border-primary"></div>
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">
-                    Block Convey
-                  </h2>
+                  <h2 className="fw-bold mb-2 text-uppercase ">Block Convey</h2>
                   <p className=" mb-5">Please enter your login and password!</p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
@@ -174,9 +161,9 @@ function Login() {
                     <div className="mt-3">
                       <p className="mb-0  text-center">
                         Don't have an account?{" "}
-                        <a href="{''}" className="text-primary fw-bold">
+                        <Link to="/signin" className="text-primary fw-bold">
                           Sign Up
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </div>
