@@ -1,22 +1,6 @@
 import { useState, useEffect } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, addDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
-
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-const firebaseConfig = {
-  apiKey: "AIzaSyClyy-UCkLKvvoiH2N-UssJTMdIpicEkUg",
-  authDomain: "sign-up-database-e34dd.firebaseapp.com",
-  projectId: "sign-up-database-e34dd",
-  storageBucket: "sign-up-database-e34dd.appspot.com",
-  messagingSenderId: "62170094234",
-  appId: "1:62170094234:web:be4ee32f7be146e77f5d23",
-  measurementId: "G-GNZ5MRF22Y",
-};
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
 
 function Signin() {
   const [formValues, setFormValues] = useState({
@@ -36,17 +20,6 @@ function Signin() {
     console.log(formErrors);
   }, [formErrors]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmit(true);
-    setFormErrors(validate(formValues));
-    console.log(Object.keys(formErrors).length);
-    if (Object.keys(formErrors).length === 0) {
-      console.log(formValues["username"]);
-      console.log(isSubmit);
-      sendDataToFire(formValues);
-    }
-  };
 
   // validate function
   const validate = (values) => {
@@ -70,13 +43,42 @@ function Signin() {
     return errors;
   };
 
-  const db = getFirestore();
-  const myCollectionRef = collection(db, "myCollection");
 
-  // send data to firesbase
-  const sendDataToFire = async (formData) => {
-    await addDoc(myCollectionRef, { formData });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmit(true);
+    setFormErrors(validate(formValues));
+    console.log(Object.keys(formErrors).length);
+    if (Object.keys(formErrors).length === 0) {
+      console.log(formValues["username"]);
+      console.log(isSubmit);
+      sendDataToFire(formValues);
+    }
   };
+
+  const sendDataToFire = async (formData) => {
+    fetch("http://127.0.0.1:8000/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", // Set the content type header
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`); // Handle HTTP errors
+        }
+        return response.json(); // Parse JSON response
+      })
+      .then((data) => {
+        console.log(data); // Handle the data from the response
+      })
+      .catch((error) => {
+        console.error("Error:", error); // Handle any errors
+      });
+  };
+
+  
 
   return (
     <div>
