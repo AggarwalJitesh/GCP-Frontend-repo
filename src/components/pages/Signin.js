@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Signin() {
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -19,7 +21,6 @@ function Signin() {
   useEffect(() => {
     console.log(formErrors);
   }, [formErrors]);
-
 
   // validate function
   const validate = (values) => {
@@ -43,7 +44,6 @@ function Signin() {
     return errors;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -57,28 +57,30 @@ function Signin() {
   };
 
   const sendDataToFire = async (formData) => {
-    fetch("http://127.0.0.1:8000/submit-form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Set the content type header
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`); // Handle HTTP errors
-        }
-        return response.json(); // Parse JSON response
-      })
-      .then((data) => {
-        console.log(data); // Handle the data from the response
-      })
-      .catch((error) => {
-        console.error("Error:", error); // Handle any errors
+    try {
+      const response = await fetch("http://127.0.0.1:8000/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-  };
 
-  
+      const responseData = await response.json();
+
+      if (
+        responseData.message ===
+        "Email already in use, please use a different email"
+      ) {
+        alert(responseData.message);
+      } else {
+        alert(responseData.message);
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Error during signup!", error);
+    }
+  };
 
   return (
     <div>
@@ -89,8 +91,10 @@ function Signin() {
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">Block Convey --signin--</h2>
-                  <p className=" mb-5">Please enter your login and password!</p>
+                  <h2 className="fw-bold mb-2 text-uppercase ">Sign In</h2>
+                  <p className=" mb-5">
+                    Join Us - Just your Email and a Strong Password
+                  </p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
                       <Form.Group
@@ -138,33 +142,16 @@ function Signin() {
                         />
                       </Form.Group>
                       <p style={{ color: "red" }}>{formErrors.password}</p>
-
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicCheckbox"
-                      >
-                        <p className="small">
-                          <a className="text-primary" href="#!">
-                            Forgot password?
-                          </a>
-                        </p>
-                      </Form.Group>
+                      ></Form.Group>
                       <div className="d-grid">
                         <button type="submit" class="btn btn-primary">
-                          {/* <Link to="/dashboard" className="nav-link text-white"> */}
                           Enter
-                          {/* </Link> */}
                         </button>
                       </div>
                     </Form>
-                    <div className="mt-3">
-                      <p className="mb-0  text-center">
-                        Don't have an account?{" "}
-                        <Link to="/signin" className="text-primary fw-bold">
-                          Sign Up
-                        </Link>
-                      </p>
-                    </div>
                   </div>
                 </div>
               </Card.Body>

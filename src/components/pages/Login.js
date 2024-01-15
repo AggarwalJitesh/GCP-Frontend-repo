@@ -1,26 +1,10 @@
 import { useState, useEffect } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-
-
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-const firebaseConfig = {
-  apiKey: "AIzaSyClyy-UCkLKvvoiH2N-UssJTMdIpicEkUg",
-  authDomain: "sign-up-database-e34dd.firebaseapp.com",
-  projectId: "sign-up-database-e34dd",
-  storageBucket: "sign-up-database-e34dd.appspot.com",
-  messagingSenderId: "62170094234",
-  appId: "1:62170094234:web:be4ee32f7be146e77f5d23",
-  measurementId: "G-GNZ5MRF22Y",
-};
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
 
 function Login() {
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     username: "",
     email: "",
@@ -37,18 +21,6 @@ function Login() {
   useEffect(() => {
     console.log(formErrors);
   }, [formErrors]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmit(true);
-    setFormErrors(validate(formValues));
-    console.log(Object.keys(formErrors).length);
-    if (Object.keys(formErrors).length === 0) {
-      console.log(formValues["username"]);
-      console.log(isSubmit);
-      sendDataToFire(formValues);
-    }
-  };
 
   // validate function
   const validate = (values) => {
@@ -72,13 +44,42 @@ function Login() {
     return errors;
   };
 
-  const db = getFirestore();
-  const myCollectionRef = collection(db, "myCollection"); 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmit(true);
+    setFormErrors(validate(formValues));
+    console.log(Object.keys(formErrors).length);
+    if (Object.keys(formErrors).length === 0) {
+      console.log(formValues["username"]);
+      console.log(isSubmit);
+      sendDataToFire(formValues);
+    }
+  };
 
-
-  // send data to firesbase
   const sendDataToFire = async (formData) => {
-    await addDoc(myCollectionRef, { formData });
+    try {
+      const response = await fetch("http://127.0.0.1:8000/checklogin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const responseData = await response.json();
+
+      if (
+        responseData.message ===
+        "Email already in use, please use a different email"
+      ) {
+        alert(responseData.message);
+      } else {
+        alert(responseData.message);
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Error during signup!", error);
+    }
   };
 
   return (
@@ -90,8 +91,8 @@ function Login() {
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">Block Convey</h2>
-                  <p className=" mb-5">Please enter your login and password!</p>
+                  <h2 className="fw-bold mb-2 text-uppercase ">Log In</h2>
+                  <p className=" mb-5">Please enter your credentials</p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
                       <Form.Group

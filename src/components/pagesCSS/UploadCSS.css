@@ -4,6 +4,7 @@
     align-items: center;
     height: 100vh; 
     width: 100vw; 
+    background: #08315C url(https://static.tumblr.com/26l8vc7/q7Glbweh4/bg.jpg);
 }
 
 .updform{
@@ -13,3 +14,161 @@
     border-radius: 5px;
     background-color: white;
 }
+
+
+/* @import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+html {
+  height: 100%;
+} 
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+  width: 100%; 
+  background: #08315C url(https://static.tumblr.com/26l8vc7/q7Glbweh4/bg.jpg);
+  font-family: Lato;
+  color: #888;
+}
+
+a {
+  color: #1a364a;
+}
+
+.fileUpload {
+  box-shadow: 0 0 2px rgba(0, 0, 0, .3);
+  background-color: #e1e3e6;
+  width: 300px;
+  padding: 35px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.fileUpload:before, .fileUpload:after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    #e1e3e6,
+    #e1e3e6 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 20px 20px;
+  background-position: 0 15px;
+}
+
+.fileUpload:after {
+  top: auto;
+  bottom: -20px;
+  background-position: 0 -15px;
+}
+
+.fileUpload h4 {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 20px 0 5px 0;
+  padding: 0;
+}
+
+.fileUpload progress {
+  appearance: none;
+  border: 0;
+  width: 100%; 
+  height: 15px;
+  color: #1a364a;
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.fileUpload progress::-moz-progress-bar {
+  background-color: #1a364a;
+  border-radius: 10px;
+}
+
+.fileUpload progress::-webkit-progress-bar {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.fileUpload progress::-webkit-progress-value {
+  position: relative;
+  background-color: #1a364a;
+  border-radius: 10px;
+}
+
+.fileUpload p {
+  font-size: 60%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.fileUpload .fileElem {
+  box-sizing: border-box;
+  width: 300px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 1;
+  height: 50px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fileUpload .fileElem:focus {
+  outline: none;
+}
+
+.fileUpload .fileSelect {
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: left;
+  padding-left: 105px;
+  width: 100%;
+  height: 50px;
+  background-color: #1a364a;
+  border-radius: 8px;
+  border-bottom: 3px solid rgba(0,0,0,.1);
+  position: relative;
+  font-size: 18px;
+  line-height: 50px;
+  color: white;
+}
+
+.fileUpload .fileSelect:before {
+  font-family: Entypo;
+  content:'\E711';
+ 
+
+position: absolute;
+top: 0;
+left: 80px;
+}
+
+#uploadToBlockchain {
+background-color: #b1b4b5;
+color: white;
+padding: 10px 20px;
+font-size: 13px;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+text-align: center;
+margin-top: 300px;
+position: absolute;
+bottom: 20px;
+}
+
+#uploadToBlockchain:hover {
+background-color: #1a364a;
+} */
