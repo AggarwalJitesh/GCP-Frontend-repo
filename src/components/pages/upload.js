@@ -50,17 +50,18 @@ const ImageUploadComponent = () => {
     formData.append("image", selectedFile);
 
     fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setResult(data.message);
-        console.log(data); // You can handle the response from the backend here
+      // fetch("http://127.0.0.1:8000/classify", {
+        method: "POST",
+        body: formData,
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          setResult(data.message);
+          console.log(data); // You can handle the response from the backend here
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
   };
 
   const handleCloseModal = () => setShowModal(false);
