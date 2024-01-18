@@ -1,43 +1,4 @@
-.contdisplay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-    width: 100vw; 
-    background: #08315C url(https://static.tumblr.com/26l8vc7/q7Glbweh4/bg.jpg);
-}
 
-.updform{
-    width: 300px; 
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-}
-
-
-/* @import url(http://weloveiconfonts.com/api/?family=entypo);
-@import url(https://fonts.googleapis.com/css?family=Lato);
-
-html {
-  height: 100%;
-} 
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  height: 100%;
-  width: 100%; 
-  background: #08315C url(https://static.tumblr.com/26l8vc7/q7Glbweh4/bg.jpg);
-  font-family: Lato;
-  color: #888;
-}
-
-a {
-  color: #1a364a;
-}
 
 .fileUpload {
   box-shadow: 0 0 2px rgba(0, 0, 0, .3);
@@ -155,20 +116,3 @@ top: 0;
 left: 80px;
 }
 
-#uploadToBlockchain {
-background-color: #b1b4b5;
-color: white;
-padding: 10px 20px;
-font-size: 13px;
-border: none;
-border-radius: 15px;
-cursor: pointer;
-text-align: center;
-margin-top: 300px;
-position: absolute;
-bottom: 20px;
-}
-
-#uploadToBlockchain:hover {
-background-color: #1a364a;
-} */

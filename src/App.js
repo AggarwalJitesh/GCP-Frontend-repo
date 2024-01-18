@@ -17,7 +17,6 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/example" element={<Example />} />
       </Routes>
     </BrowserRouter>
   );

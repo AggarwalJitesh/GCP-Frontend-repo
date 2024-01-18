@@ -1,89 +1,66 @@
-import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import Footer from "../inc/footer";
+import React, { useState } from "react";
 
-import "bootstrap/dist/css/bootstrap.css";
-import Navigation from "../inc/navigation";
+function UploadToBlockchain() {
+  const [progress, setProgress] = useState(0);
+  const [showUploadButton, setShowUploadButton] = useState(false);
 
-function Example() {
-  const [data, setData] = useState([]);
-
-  const fetchData = () => {
-    fetch("http://127.0.0.1:5000/get_data", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((actualData) => {
-        console.log(actualData);
-        setData(actualData);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  const handleChange = () => {
+    // Simulate file upload (replace this with your actual upload logic)
+    simulateFileUpload();
   };
 
-  // const openImageInNewTab = (imageUrl) => {
-  //   // window.open(imageUrl, "_blank");
-  //   const anchor = document.createElement("a");
-  //   anchor.href = imageUrl;
-  //   anchor.target = "_blank";
+  const simulateFileUpload = () => {
+    let value = 0;
+    const interval = setInterval(() => {
+      if (value >= 100) {
+        clearInterval(interval);
+        setShowUploadButton(true);
+        return;
+      }
 
-  //   // Programmatically click the anchor to open the image in a new tab
-  //   anchor.click();
-  // };
+      value += 5; // Simulated progress increment
+      setProgress(value);
+    }, 500); // Simulated upload interval (milliseconds)
+  };
+
+  const handleUploadToBlockchain = () => {
+    // Add your code to upload to the blockchain here
+    alert("Uploading to Blockchain...");
+  };
 
   return (
-    <div class="banner1">
-      <Navigation />
-      <div class="container">
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">userName</th>
-              <th scope="col">email</th>
-              <th scope="col">password</th>
-              <th scope="col">image</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td scope="row">{item.id}</td>
-                <td>{item.username}</td>
-                <td>{item.email}</td>
-                <td>{item.password}</td>
-                <td>
-                  {/* <button onClick={openImageInNewTab(item.image_url)}>
-                    Open
-                  </button> */}
+    <div>
+      <form className="fileUpload">
+        <input
+          type="file"
+          multiple
+          className="fileElem"
+          id="fileInput"
+          onChange={handleChange}
+        />
 
-                  <img
-                    src={item.image_url}
-                    // alt={`Image ${item.id}`}
-                    style={{ maxWidth: "100px" }}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div class="container text-center ">
-          <button
-            type="button"
-            class="btn btn-outline-info btn-lg mt-4"
-            onClick={fetchData}
-          >
-            get info
-          </button>
-        </div>
-      </div>
+        
+        <label className="fileSelect" htmlFor="fileInput">
+          Upload File
+        </label>
+        <h4>Usage</h4>
+        <progress value={progress} max="100" id="uploadProgress"></progress>
+        <p>
+          <span id="progressText">{progress}%</span> of 100% (
+          <a href="#" className="upgrade">
+            Upgrade
+          </a>
+          )
+        </p>
+      </form>
+
+      {showUploadButton && (
+        <button id="uploadToBlockchain" onClick={handleUploadToBlockchain}>
+          Upload to Blockchain
+        </button>
+      )}
     </div>
   );
 }
 
-export default Example;
+export default UploadToBlockchain;

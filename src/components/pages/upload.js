@@ -17,7 +17,6 @@ import {
 
 const ImageUploadComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  // ImageURL -- selectedImage
 
   const [progress, setProgress] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -49,60 +48,62 @@ const ImageUploadComponent = () => {
     const formData = new FormData();
     formData.append("image", selectedFile);
 
-    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
-      // fetch("http://127.0.0.1:8000/classify", {
-        method: "POST",
-        body: formData,
+    // fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
+    fetch("http://127.0.0.1:8000/classify", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setResult(data.message);
+        console.log(data); 
       })
-        .then((response) => response.json())
-        .then((data) => {
-          setResult(data.message);
-          console.log(data); // You can handle the response from the backend here
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const handleCloseModal = () => setShowModal(false);
 
   return (
-    <Form onSubmit={handleSubmit} className="contdisplay">
+    <>
       <Navigation />
-      <Row>
-        <Col md={6}>
-          {selectedImage && (
-            <Image src={selectedImage} alt="Preview" thumbnail />
-          )}
-        </Col>
-        <Col md={6}>
-          <Form.Group controlId="formFile" className="updform mb-3">
-            <Form.Label>Upload an Image</Form.Label>
-            <Form.Control
-              className="upldfl"
-              type="file"
-              onChange={handleImageChange}
-            />
-          </Form.Group>
-          <ProgressBar now={progress} label={`${progress}%`} />
-          <Button variant="primary" type="submit" className="mt-3">
-            Submit
-          </Button>
-        </Col>
-      </Row>
+      <Form onSubmit={handleSubmit} className="fileUpload">
+        {selectedImage && <Image src={selectedImage} alt="Preview" thumbnail />}
+        <input
+          type="file"
+          multiple
+          className="fileElem"
+          id="fileInput"
+          onChange={handleImageChange}
+        />
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Image Classification Result</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{result}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseModal}>
-            Add to Blockchain
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </Form>
+        <label className="fileSelect" htmlFor="fileInput">
+          Upload an Image
+        </label>
+        <progress
+          value={progress}
+          max="100"
+          label={`${progress}%`}
+          id="uploadProgress"
+        ></progress>
+        <Button type="submit" className="mt-3">
+          Submit
+        </Button>
+
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Image Classification Result</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>{result}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleCloseModal}>
+              Add to Blockchain
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </Form>
+    </>
   );
 };
 
