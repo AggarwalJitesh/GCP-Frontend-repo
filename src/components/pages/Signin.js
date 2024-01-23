@@ -52,11 +52,11 @@ function Signin() {
     if (Object.keys(formErrors).length === 0) {
       console.log(formValues["username"]);
       console.log(isSubmit);
-      sendDataToFire(formValues);
+      storeData(formValues);
     }
   };
 
-  const sendDataToFire = async (formData) => {
+  const storeData = async (formData) => {
     try {
       const response = await fetch(
         "https://flask-app-hmq66d7qyq-uc.a.run.app/submit-form",

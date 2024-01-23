@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-
+import "../pagesCSS/loginCSS.css";
 
 function Login() {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -26,9 +25,6 @@ function Login() {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.username) {
-      errors.username = "Username is required!";
-    }
     if (!values.email) {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
@@ -50,13 +46,12 @@ function Login() {
     setFormErrors(validate(formValues));
     console.log(Object.keys(formErrors).length);
     if (Object.keys(formErrors).length === 0) {
-      console.log(formValues["username"]);
       console.log(isSubmit);
-      sendDataToFire(formValues);
+      validateData(formValues);
     }
   };
 
-  const sendDataToFire = async (formData) => {
+  const validateData = async (formData) => {
     try {
       const response = await fetch("http://127.0.0.1:8000/checklogin", {
         method: "POST",
@@ -68,17 +63,12 @@ function Login() {
 
       const responseData = await response.json();
 
-      if (
-        responseData.message ===
-        "Email already in use, please use a different email"
-      ) {
+      if (responseData.message === "User Authenticated") {
         alert(responseData.message);
-      } else {
-        alert(responseData.message);
-        navigate("/login");
+        navigate("/upload");
       }
     } catch (error) {
-      console.error("Error during signup!", error);
+      alert("Error during login!");
     }
   };
 
@@ -95,22 +85,6 @@ function Login() {
                   <p className=" mb-5">Please enter your credentials</p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicUserName"
-                      >
-                        <Form.Label className="text-center">
-                          User Name
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="username"
-                          placeholder="Username"
-                          value={formValues.username}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-                      <p style={{ color: "red" }}>{formErrors.username}</p>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center">

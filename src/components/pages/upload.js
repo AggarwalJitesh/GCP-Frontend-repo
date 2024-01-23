@@ -63,48 +63,63 @@ const ImageUploadComponent = () => {
       });
   };
 
-  const handleCloseModal = () => setShowModal(false);
+  const handleCloseModal = () => {
+    // fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
+    fetch("http://127.0.0.1:8000/addtoblockchain", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    setShowModal(false);
+  };
 
-  return (
-    <>
-      <Navigation />
-      <Form onSubmit={handleSubmit} className="fileUpload">
-        {selectedImage && <Image src={selectedImage} alt="Preview" thumbnail />}
-        <input
-          type="file"
-          multiple
-          className="fileElem"
-          id="fileInput"
-          onChange={handleImageChange}
-        />
+   return (
+     <>
+       <Navigation />
+       <div className="testCard">
+         <Form onSubmit={handleSubmit} className="fileUpload">
+           {selectedImage && (
+             <Image src={selectedImage} alt="Preview" thumbnail />
+           )}
+           <input
+             type="file"
+             multiple
+             className="fileElem"
+             id="fileInput"
+             onChange={handleImageChange}
+           />
 
-        <label className="fileSelect" htmlFor="fileInput">
-          Upload an Image
-        </label>
-        <progress
-          value={progress}
-          max="100"
-          label={`${progress}%`}
-          id="uploadProgress"
-        ></progress>
-        <Button type="submit" className="mt-3">
-          Submit
-        </Button>
+           <label className="fileSelect" htmlFor="fileInput">
+             Upload an Image
+           </label>
+           <progress
+             value={progress}
+             max="100"
+             label={`${progress}%`}
+             id="uploadProgress"
+           ></progress>
+           <Button type="submit" className="submitbtn">
+             Submit
+           </Button>
 
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Image Classification Result</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>{result}</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleCloseModal}>
-              Add to Blockchain
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Form>
-    </>
-  );
+           <Modal show={showModal} onHide={handleCloseModal}>
+             <Modal.Header closeButton>
+               <Modal.Title>Image Classification Result</Modal.Title>
+             </Modal.Header>
+             <Modal.Body>{result}</Modal.Body>
+             <Modal.Footer>
+               <Button variant="primary" onClick={handleCloseModal}>
+                 Add to Blockchain
+               </Button>
+             </Modal.Footer>
+           </Modal>
+         </Form>
+       </div>
+     </>
+   );
 };
 
 export default ImageUploadComponent;
+
