@@ -1,0 +1,38 @@
+.dashcontainer {
+    background: #1e1e1e;
+    padding: 20px;
+    margin-top: 50px !important;
+    margin-left: auto; /* Centering the container */
+    margin-right: auto; /* Centering the container */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80%; /* Adjust the width as needed */
+}
+
+.dashcontainer h2, .dashcontainer p {
+    color: #ffffff;  
+}
+
+.table {
+    margin-top: 20px;
+    color: #ddd;
+}
+
+.table th {
+    background-color: #2a2a2a;
+}
+
+.table td, .table th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.table td a {
+    color: #4ea0d9;
+    text-decoration: none;
+}
+
+.table td a:hover {
+    text-decoration: underline;
+}

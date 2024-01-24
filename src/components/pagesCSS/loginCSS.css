@@ -1,3 +1,58 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+.card-body{
+  background-color: #e4f2fc;
+  font-family: "Trebuchet MS", Helvetica, sans-serif
+}
+
+/*.fw-bold{
+  font-size: 30px;
+}*/
+
+.login-heading {
+  font-size: 40px;
+}
+.border {
+  display: none;
+}
+
+.shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.col-lg-6 {
+  transition: color 0.3s ease;
+}
+
+.col-lg-6:hover {
+  color: #0f3c6d; 
+}
+
 .btn {
-  background-color: black !important;
+  background-color: #1a364a !important;
+  color: #fff;
+  width: 100px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0d1c2c !important; 
+}
+
+.fw-bold{
+   text-align: center;
+}
+
+.mb-5{
+  text-align: center;
 }

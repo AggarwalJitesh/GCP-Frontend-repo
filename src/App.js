@@ -4,7 +4,6 @@ import Login from "./components/pages/Login";
 import Signin from "./components/pages/Signin";
 import About from "./components/pages/About";
 import Dashboard from "./components/pages/dashboard";
-import Example from "./components/pages/example";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
