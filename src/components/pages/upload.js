@@ -81,7 +81,12 @@ const ImageUploadComponent = () => {
        <div className="testCard">
          <Form onSubmit={handleSubmit} className="fileUpload">
            {selectedImage && (
-             <Image src={selectedImage} alt="Preview" thumbnail />
+             <Image
+               className="img-preview"
+               src={selectedImage}
+               alt="Preview"
+               thumbnail
+             />
            )}
            <input
              type="file"

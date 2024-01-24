@@ -26,19 +26,19 @@ const Dashboard = ({ userName }) => {
     {
       id: "img1",
       uploadDate: "2024-01-22",
-      description: "glioma tumor",
+      description: "Glioma Tumor",
       url: "#",
     },
     {
       id: "img2",
       uploadDate: "2024-01-20",
-      description: "no_tumor",
+      description: "No Tumor",
       url: "#",
     },
     {
       id: "img3",
       uploadDate: "2024-01-18",
-      description: "no_tumor",
+      description: "No Tumor",
       url: "#",
     },
     // Add more demo items as needed

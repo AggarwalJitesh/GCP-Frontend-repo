@@ -144,3 +144,9 @@ padding-left: 0.1rem;
   background-color: #1a364a !important;
   border-color: #1a364a !important;
 }
+
+.img-preview {
+  width: 300px;  /* predefined width */
+  height: 100px; /* predefined height */
+  object-fit: cover; /* this will cover the area without breaking the aspect ratio */
+}
