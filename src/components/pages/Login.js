@@ -51,9 +51,13 @@ function Login() {
     }
   };
 
+  
+
   const validateData = async (formData) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/checklogin", {
+      // const response = await fetch("http://127.0.0.1:8000/checklogin", {
+
+      const response = await fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/checklogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -58,10 +58,10 @@ function Signin() {
 
   const storeData = async (formData) => {
     try {
-      const response = await fetch(
-        "https://flask-app-hmq66d7qyq-uc.a.run.app/submit-form",
-        {
-          // const response = await fetch("http://127.0.0.1:8000/submit-form", {
+      // const response = await fetch(
+      //   "https://flask-app-hmq66d7qyq-uc.a.run.app/submit-form",
+      //   {
+        const response = await fetch("http://127.0.0.1:8000/submit-form", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
