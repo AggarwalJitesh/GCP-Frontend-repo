@@ -1,11 +1,11 @@
 .dashcontainer {
-    background: #1e1e1e;
+    background: #ffffff;
     padding: 20px;
     margin-top: 50px !important;
     margin-left: auto; /* Centering the container */
     margin-right: auto; /* Centering the container */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);
     width: 80%; /* Adjust the width as needed */
 }
 
@@ -19,7 +19,7 @@
 }
 
 .table th {
-    background-color: #2a2a2a;
+    background-color: #fafafa;
 }
 
 .table td, .table th {

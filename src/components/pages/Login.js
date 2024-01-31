@@ -51,19 +51,20 @@ function Login() {
     }
   };
 
-  
-
   const validateData = async (formData) => {
     try {
       // const response = await fetch("http://127.0.0.1:8000/checklogin", {
 
-      const response = await fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/checklogin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://flask-app-hmq66d7qyq-uc.a.run.app/checklogin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const responseData = await response.json();
 
@@ -85,13 +86,14 @@ function Login() {
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">Log In</h2>
-                  <p className=" mb-5">Please enter your credentials</p>
+                  <h2 className="loginbr fw-bold mb-2 text-uppercase ">
+                    Log In
+                  </h2>
+                  <p className="plsenter mb-5">Please enter your credentials</p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
-
                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="text-center">
+                        <Form.Label className="email text-center">
                           Email address
                         </Form.Label>
                         <Form.Control
@@ -108,7 +110,7 @@ function Login() {
                         className="mb-3"
                         controlId="formBasicPassword"
                       >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className="pass">Password</Form.Label>
                         <Form.Control
                           type="password"
                           name="password"
@@ -124,7 +126,7 @@ function Login() {
                         controlId="formBasicCheckbox"
                       >
                         <p className="small">
-                          <a className="text-primary" href="#!">
+                          <a className="forgot text-primary" href="#!">
                             Forgot password?
                           </a>
                         </p>

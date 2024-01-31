@@ -49,14 +49,14 @@ const ImageUploadComponent = () => {
     formData.append("image", selectedFile);
 
     fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/classify", {
-    // fetch("http://127.0.0.1:8000/classify", {
+      // fetch("http://127.0.0.1:8000/classify", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
         setResult(data.message);
-        console.log(data); 
+        console.log(data);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -75,56 +75,65 @@ const ImageUploadComponent = () => {
     setShowModal(false);
   };
 
-   return (
-     <>
-       <Navigation />
-       <div className="testCard">
-         <Form onSubmit={handleSubmit} className="fileUpload">
-           {selectedImage && (
-             <Image
-               className="img-preview"
-               src={selectedImage}
-               alt="Preview"
-               thumbnail
-             />
-           )}
-           <input
-             type="file"
-             multiple
-             className="fileElem"
-             id="fileInput"
-             onChange={handleImageChange}
-           />
+  return (
+    <>
+      <Navigation />
+      <div className="testCard">
+        <Form onSubmit={handleSubmit} className="fileUpload">
+          <div class="row">
+            <div class="col-lg">
+              <div class="row-lg">
+                {selectedImage && (
+                  <Image
+                    className="img-preview"
+                    src={selectedImage}
+                    alt="Preview"
+                    thumbnail
+                  />
+                )}
+              </div>
+              <div class="row-lg">
+                <progress
+                  value={progress}
+                  max="100"
+                  label={`${progress}%`}
+                  id="uploadProgress"
+                ></progress>
+              </div>
+            </div>
+            <div class="col-lg">
+              <input
+                type="file"
+                multiple
+                className="fileElem"
+                id="fileInput"
+                onChange={handleImageChange}
+              />
 
-           <label className="fileSelect" htmlFor="fileInput">
-             Upload an Image
-           </label>
-           <progress
-             value={progress}
-             max="100"
-             label={`${progress}%`}
-             id="uploadProgress"
-           ></progress>
-           <Button type="submit" className="submitbtn">
-             Submit
-           </Button>
+              <label className="fileSelect" htmlFor="fileInput">
+                Upload an Image
+              </label>
 
-           <Modal show={showModal} onHide={handleCloseModal}>
-             <Modal.Header closeButton>
-               <Modal.Title>Image Classification Result</Modal.Title>
-             </Modal.Header>
-             <Modal.Body>{result}</Modal.Body>
-             <Modal.Footer>
-               <Button variant="primary" onClick={handleCloseModal}>
-                 Add to Blockchain
-               </Button>
-             </Modal.Footer>
-           </Modal>
-         </Form>
-       </div>
-     </>
-   );
+              <Button type="submit" className="submitbtn">
+                Submit
+              </Button>
+            </div>
+          </div>
+        </Form>
+      </div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Image Classification Result</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{result}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleCloseModal}>
+            Add to Blockchain
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 };
 
 export default ImageUploadComponent;
-

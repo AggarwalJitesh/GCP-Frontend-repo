@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../pagesCSS/signCSS.css";
 
 function Signin() {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ function Signin() {
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">Sign Up</h2>
+                  <h2 className="sign fw-bold mb-2 text-uppercase ">Sign Up</h2>
                   <p className=" mb-5">
                     Join Us - Just your Email and a Strong Password
                   </p>
@@ -136,7 +137,9 @@ function Signin() {
                         className="mb-3"
                         controlId="formBasicPassword"
                       >
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className="text-center">
+                          Password
+                        </Form.Label>
                         <Form.Control
                           type="password"
                           name="password"
