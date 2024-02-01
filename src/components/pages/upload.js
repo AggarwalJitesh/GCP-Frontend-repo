@@ -8,7 +8,6 @@ import { Button, Modal, Form, Image } from "react-bootstrap";
 const ImageUploadComponent = () => {
   const [selectedImage, setSelectedImage] = useState(null); // img url dor preview
   const [selectedFile, setSelectedFile] = useState(null); // file to be sent too backend
-  const [isUploaded, setIsUploaded] = useState(false); // New state to track if the image has been "processed"
 
   const [result, setResult] = useState(null); // keeps the classified result
 
@@ -19,10 +18,8 @@ const ImageUploadComponent = () => {
     if (event.target.files && event.target.files[0]) {
       setSelectedImage(URL.createObjectURL(event.target.files[0]));
       setSelectedFile(event.target.files[0]);
-      setIsUploaded(false); // Reset upload state in case of a new upload
     } else {
       setSelectedImage(null); 
-      setIsUploaded(false);
     }
   };
 
@@ -47,7 +44,6 @@ const ImageUploadComponent = () => {
 
     try {
       const data = await sendDataToBackend(endpointPath, formData);
-      setIsUploaded(true);
       setResult(data.message);
     } catch (error) {
       console.error("Failed to send data:", error);

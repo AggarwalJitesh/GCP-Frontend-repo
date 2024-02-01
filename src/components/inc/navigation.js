@@ -1,10 +1,4 @@
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Offcanvas from "react-bootstrap/Offcanvas";
+
 import { Link } from "react-router-dom";
 
 function Navigation() {
@@ -23,7 +17,7 @@ function Navigation() {
           className="text-white navbar-brand navtext"
           style={{ textDecoration: "none" }}
         >
-          Block Convey
+          Demo
         </Link>
         <button
           className="navbar-toggler"

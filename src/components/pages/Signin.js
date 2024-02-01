@@ -94,7 +94,7 @@ function Signin() {
                 <div className="mb-3 mt-md-4">
                   <h2 className="sign fw-bold mb-2 text-uppercase ">Sign Up</h2>
                   <p className=" mb-5">
-                    Join Us - Just your Email and a Strong Password
+                    Join Us
                   </p>
                   <div className="mb-3">
                     <Form onSubmit={handleSubmit}>
