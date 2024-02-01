@@ -3,18 +3,16 @@ import "../pagesCSS/DashboardCSS.css";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 const Dashboard = ({ userName }) => {
-  const [data, setData] = useState({});
-
+  const [transaction, setTransaction] = useState({});
   useEffect(() => {
-    // Fetch data from the FastAPI backend
-    fetch("http://localhost:8000/transaction") // Adjust the URL based on your backend
+    // Adjust the fetch URL to match your FastAPI endpoint
+    fetch("http://127.0.0.1:8000/transaction/")
       .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error("Error:", error));
+      .then((data) => {
+        setTransaction(data); // Set data in an array to map over it
+      });
   }, []);
-
 
   return (
     <div className="dashcontainer mt-5">
@@ -26,25 +24,17 @@ const Dashboard = ({ userName }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>Image ID</th>
-            <th>Upload Date</th>
-            <th>Classification Result</th>
-            <th>View</th>
+            <th>Field</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
-          {/* {imageHistory.map((image, index) => (
-            <tr key={index}>
-              <td>{image.id}</td>
-              <td>{image.uploadDate}</td>
-              <td>{image.description}</td>
-              <td>
-                <a href={image.url} target="_blank" rel="noopener noreferrer">
-                  View Image
-                </a>
-              </td>
+          {Object.entries(transaction).map(([key, value]) => (
+            <tr key={key}>
+              <td>{key}</td>
+              <td>{value}</td>
             </tr>
-          ))} */}
+          ))}
         </tbody>
       </table>
     </div>

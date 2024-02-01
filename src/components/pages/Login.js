@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Col, Row, Container, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "../pagesCSS/loginCSS.css";
+import { sendDataToBackend } from "../inc/apiService";
 
 function Login() {
   const navigate = useNavigate();
@@ -52,28 +53,23 @@ function Login() {
   };
 
   const validateData = async (formData) => {
+    const endpointPath = "checklogin";
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
     try {
-      // const response = await fetch("http://127.0.0.1:8000/checklogin", {
-
-      const response = await fetch(
-        "https://flask-app-hmq66d7qyq-uc.a.run.app/checklogin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
+      const responseData = await sendDataToBackend(
+        endpointPath,
+        JSON.stringify(formData),
+        headers
       );
-
-      const responseData = await response.json();
-
       if (responseData.message === "User Authenticated") {
         alert(responseData.message);
         navigate("/upload");
       }
     } catch (error) {
-      alert("Error during login!");
+      console.error("Failed login:", error);
     }
   };
 

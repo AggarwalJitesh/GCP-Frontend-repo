@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Col, Row, Container, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../pagesCSS/signCSS.css";
+import { sendDataToBackend } from "../inc/apiService";
 
 function Signin() {
   const navigate = useNavigate();
@@ -58,21 +58,17 @@ function Signin() {
   };
 
   const storeData = async (formData) => {
+    const endpointPath = "submit-form";
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
     try {
-      const response = await fetch(
-        "https://flask-app-hmq66d7qyq-uc.a.run.app/submit-form",
-        {
-          // const response = await fetch("http://127.0.0.1:8000/submit-form", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
+      const responseData = await sendDataToBackend(
+        endpointPath,
+        JSON.stringify(formData),
+        headers
       );
-
-      const responseData = await response.json();
-
       if (
         responseData.message ===
         "Email already in use, please use a different email"
