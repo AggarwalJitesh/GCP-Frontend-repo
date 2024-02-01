@@ -1,35 +1,46 @@
 .dashcontainer {
-    background: #ffffff;
+    background:#081e23;
     padding: 20px;
-    margin-top: 50px !important;
-    margin-left: auto; /* Centering the container */
-    margin-right: auto; /* Centering the container */
+    top: 80px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(241, 241, 241, 0.3);
-    width: 80%; /* Adjust the width as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80%; 
+    position: relative;
+    font-family: Tahoma, Verdana, sans-serif;
 }
 
+.dash{
+    text-align: center;
+}
+.mb-4{
+    color: #F4CB83!important;
+}
 .dashcontainer h2, .dashcontainer p {
-    color: #ffffff;  
+    color: #F4CB83;  
 }
 
 .table {
-    margin-top: 20px;
-    color: #ddd;
+    margin-top: 30px;
+    background-color: #F4CB83 !important;
+    color:  #F4CB83 !important;
 }
 
 .table th {
-    background-color: #fafafa;
+    background-color:#F4CB83 !important
 }
 
 .table td, .table th {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #444;
+    background-color:#F4CB83;
 }
 
 .table td a {
-    color: #4ea0d9;
+    color: #EEC550;
     text-decoration: none;
 }
 

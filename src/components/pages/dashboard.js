@@ -3,6 +3,7 @@ import "../pagesCSS/DashboardCSS.css";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const Dashboard = ({ userName }) => {
   const [data, setData] = useState({});
 
@@ -18,19 +19,34 @@ const Dashboard = ({ userName }) => {
   return (
     <div className="dashcontainer mt-5">
       <div className="mb-4">
-        <h2>Dashboard</h2>
+        <h2 className="dash">DASHBOARD</h2>
         <Navigation />
         <p>Welcome, {userName}!</p>
       </div>
-      <div>
-        <h1>User Details</h1>
-        {data && (
-          <ul>
-            <li>Name: {data.blockNumber}</li>
-            <li>Age: {data.contractAddress}</li>
-          </ul>
-        )}
-      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Image ID</th>
+            <th>Upload Date</th>
+            <th>Classification Result</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* {imageHistory.map((image, index) => (
+            <tr key={index}>
+              <td>{image.id}</td>
+              <td>{image.uploadDate}</td>
+              <td>{image.description}</td>
+              <td>
+                <a href={image.url} target="_blank" rel="noopener noreferrer">
+                  View Image
+                </a>
+              </td>
+            </tr>
+          ))} */}
+        </tbody>
+      </table>
     </div>
   );
 };
