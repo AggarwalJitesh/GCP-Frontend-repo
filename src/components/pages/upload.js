@@ -3,9 +3,11 @@ import { sendDataToBackend } from "../inc/apiService";
 import "../pagesCSS/UploadCSS.css";
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Modal, Form, Image } from "react-bootstrap";
 
 const ImageUploadComponent = () => {
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null); // img url dor preview
   const [selectedFile, setSelectedFile] = useState(null); // file to be sent too backend
 
@@ -60,6 +62,7 @@ const ImageUploadComponent = () => {
         console.error("Error:", error);
       });
     setShowModal(false);
+    navigate("/dashboard");
   };
 
   return (

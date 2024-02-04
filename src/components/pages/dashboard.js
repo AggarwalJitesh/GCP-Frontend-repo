@@ -3,7 +3,9 @@ import "../pagesCSS/DashboardCSS.css";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 const Dashboard = ({ userName }) => {
+  
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -25,28 +27,24 @@ const Dashboard = ({ userName }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>Block Hash</th>
-            <th>Block Number</th>
-            <th>Hash</th>
             <th>Image Name</th>
             <th>Result</th>
+            <th>Block Hash</th>
+            <th>Block Number</th>
+            <th>Transaction Hash</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
+              <td>{item.imageName}</td>
+              <td>{item.result}</td>
               <td>{item.blockHash}</td>
               <td>{item.blockNumber}</td>
               <td>{item.hash}</td>
-              {/* <td>{item.imageName}</td>
-              <td>{item.result}</td> */}
-              <td>"imageName"</td>
-              <td>"result"</td>
               <td>
-                <a href="https://storage.cloud.google.com/demo_blockconvey/static/image_01ae8ea8-f7c4-4fdd-8a14-3cceb2c902fa.jpg">
-                  View Image
-                </a>
+                <a href={item.url}>View Image</a>
               </td>
             </tr>
           ))}
