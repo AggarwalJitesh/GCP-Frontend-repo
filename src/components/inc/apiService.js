@@ -1,11 +1,11 @@
 
 
-// const CLOUD_RUN_URL = "https://flask-app-hmq66d7qyq-uc.a.run.app" // Base URL of cloud run
+const CLOUD_RUN_URL = "https://flask-app-hmq66d7qyq-uc.a.run.app" // Base URL of cloud run
 const BASE_URL = "http://127.0.0.1:8000"; // Base URL of FastAPI backend
 
 const sendDataToBackend = async (endpointPath, formData, headers = null) => {
-  // const url = `${CLOUD_RUN_URL}/${endpointPath}`;
-  const url = `${BASE_URL}/${endpointPath}`;
+  const url = `${CLOUD_RUN_URL}/${endpointPath}`;
+  // const url = `${BASE_URL}/${endpointPath}`;
 
   let options = {
     method: "POST",

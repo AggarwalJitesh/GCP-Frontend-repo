@@ -53,8 +53,8 @@ const ImageUploadComponent = () => {
   };
 
   const handleCloseModal = () => {
-    // fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/addtoblockchain", {
-    fetch("http://127.0.0.1:8000/addtoblockchain", {
+    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/addtoblockchain", {
+    // fetch("http://127.0.0.1:8000/addtoblockchain", {
       method: "GET",
     })
       .then((response) => response.json())

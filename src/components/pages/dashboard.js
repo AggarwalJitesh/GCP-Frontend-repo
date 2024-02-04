@@ -10,7 +10,8 @@ const Dashboard = ({ userName }) => {
 
   useEffect(() => {
     // Adjust the fetch URL to match your FastAPI endpoint
-    fetch("http://127.0.0.1:8000/transaction/")
+    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/transaction/")
+    // fetch("http://127.0.0.1:8000/transaction/")
       .then((response) => response.json())
       .then((data) => {
         setData([data]); // Set the fetched data into the state
