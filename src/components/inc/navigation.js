@@ -42,11 +42,11 @@ function Navigation() {
                 Upload Image
               </Link>
             </li>
-            <li className="nav-item ">
+            {/* <li className="nav-item ">
               <Link to="/login" className="nav-link text-white">
                 Log In
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

@@ -4,16 +4,9 @@ body {
   color: #F4CB83;
 }
 .card-body{
-  background-color: #081e23;
+  background-color: #081e23 !important;
   font-family: Tahoma, Verdana, sans-serif;
-  border: none;
 }
-
-.shadow{
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 
 .loginbr{
   color: #F4CB83;

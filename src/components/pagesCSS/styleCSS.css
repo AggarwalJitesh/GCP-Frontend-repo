@@ -1,0 +1,50 @@
+.template {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  flex-basis: calc(33% - 40px); /* Adjust the spacing based on your layout */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #9b59b6;
+  border-radius: 50%;
+  color: white;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Specific colors for circles */
+.circle-1 {
+  background-color: #8e44ad;
+}
+
+.circle-2 {
+  background-color: #9b59b6;
+}
+
+.circle-3 {
+  background-color: #be90d4;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.5em;
+}
+
+p {
+  color: #666;
+  font-size: 1em;
+}

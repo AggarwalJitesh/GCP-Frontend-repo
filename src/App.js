@@ -4,6 +4,7 @@ import Login from "./components/pages/Login";
 import Signin from "./components/pages/Signin";
 import About from "./components/pages/About";
 import Dashboard from "./components/pages/dashboard";
+import Style from "./components/pages/style";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/style" element={<Style />} />
       </Routes>
     </BrowserRouter>
   );

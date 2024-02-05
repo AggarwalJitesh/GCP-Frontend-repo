@@ -3,9 +3,7 @@ import "../pagesCSS/DashboardCSS.css";
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 const Dashboard = () => {
-  
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ const Dashboard = () => {
         <Navigation />
         <p>Welcome</p>
       </div>
-      <table className="table">
+      {/* <table className="table">
         <thead>
           <tr>
             <th>Image Name</th>
@@ -49,7 +47,39 @@ const Dashboard = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+      {data.map((item, itemIndex) => (
+        <table className="table" key={itemIndex}>
+          <tbody>
+            <tr>
+              <th>Image Name</th>
+              <td>{item.imageName}</td>
+            </tr>
+            <tr>
+              <th>Result</th>
+              <td>{item.result}</td>
+            </tr>
+            <tr>
+              <th>Block Hash</th>
+              <td>{item.blockHash}</td>
+            </tr>
+            <tr>
+              <th>Block Number</th>
+              <td>{item.blockNumber}</td>
+            </tr>
+            <tr>
+              <th>Hash</th>
+              <td>{item.hash}</td>
+            </tr>
+            <tr>
+              <th>URL</th>
+              <td>
+                <a href={item.url}>View Image</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      ))}
     </div>
   );
 };

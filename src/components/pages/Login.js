@@ -78,74 +78,63 @@ function Login() {
       <Container>
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={8} lg={6} xs={12}>
-            <div className="border border-3 border-primary"></div>
-            <Card className="shadow">
-              <Card.Body>
-                <div className="mb-3 mt-md-4">
-                  <h2 className="loginbr fw-bold mb-2 text-uppercase ">
-                    Log In
-                  </h2>
-                  <p className="plsenter mb-5">Please enter your credentials</p>
-                  <div className="mb-3">
-                    <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="email text-center">
-                          Email address
-                        </Form.Label>
-                        <Form.Control
-                          type="text"
-                          name="email"
-                          placeholder="Email"
-                          value={formValues.email}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-                      <p style={{ color: "red" }}>{formErrors.email}</p>
+            <Card className="card-body">
+              <div className="mb-3 mt-md-4">
+                <h2 className="loginbr fw-bold mb-2 text-uppercase ">Log In</h2>
+                <p className="plsenter mb-5">Please enter your credentials</p>
+                <div className="mb-3">
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label className="email text-center">
+                        Email address
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        value={formValues.email}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <p style={{ color: "red" }}>{formErrors.email}</p>
 
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicPassword"
-                      >
-                        <Form.Label className="pass">Password</Form.Label>
-                        <Form.Control
-                          type="password"
-                          name="password"
-                          placeholder="Password"
-                          value={formValues.password}
-                          onChange={handleChange}
-                        />
-                      </Form.Group>
-                      <p style={{ color: "red" }}>{formErrors.password}</p>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                      <Form.Label className="pass">Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formValues.password}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <p style={{ color: "red" }}>{formErrors.password}</p>
 
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicCheckbox"
-                      >
-                        <p className="small">
-                          <a className="forgot text-primary" href="#!">
-                            Forgot password?
-                          </a>
-                        </p>
-                      </Form.Group>
-                      <div className="d-grid">
-                        <button type="submit" class="btn btn-primary">
-                          {/* <Link to="/dashboard" className="nav-link text-white"> */}
-                          Enter
-                          {/* </Link> */}
-                        </button>
-                      </div>
-                    </Form>
-                    <div className="mt-3">
-                      <p className="mb-0  text-center">
-                        Don't have an account?{" "}
-                        <Link to="/signin" className="text-primary fw-bold">
-                          Sign Up
-                        </Link>
-                      </p>
+                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                      {/* <p className="small">
+                        <a className="forgot text-primary" href="#!">
+                          Forgot password?
+                        </a>
+                      </p> */}
+                    </Form.Group>
+                    <div className="d-grid">
+                      <button type="submit" class="btn btn-primary">
+                        {/* <Link to="/dashboard" className="nav-link text-white"> */}
+                        Enter
+                        {/* </Link> */}
+                      </button>
                     </div>
+                  </Form>
+                  <div className="mt-3">
+                    <p className="mb-0  text-center">
+                      Don't have an account?{" "}
+                      <Link to="/signin" className="text-primary fw-bold">
+                        Sign Up
+                      </Link>
+                    </p>
                   </div>
                 </div>
-              </Card.Body>
+              </div>
             </Card>
           </Col>
         </Row>
