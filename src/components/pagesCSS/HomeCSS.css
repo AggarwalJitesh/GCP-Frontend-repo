@@ -25,46 +25,6 @@
   margin-top: -25vh;
 }
 
-.fedlearn {
-  margin-top: 20vw;
-  margin-bottom: 20vw;
-}
-
-.right {
-  padding: 2rem;
-  text-align: justify;
-  background-color: rgb(181, 223, 223);
-  width: 60%;
-  margin-left: -5%;
-}
-
-@media only screen and (max-width: 1000px) {
-  .fedlearn {
-    align-items: center;
-    justify-content: center;
-  }
-  .left {
-    width: 90vw;
-    text-align: justify;
-    margin-top: 0%;
-  }
-  .right {
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1;
-  }
-}
-
-.card {
-  margin: 2.5vw;
-}
-
-.card-img-top {
-  width: 70%;
-  max-width: 250px;
-}
-
 .template {
   display: flex;
   justify-content: space-evenly;
@@ -116,8 +76,15 @@ p {
   font-size: 1em;
 }
 
+.button-row {
+  display: flex;
+  justify-content: center; /* Center children horizontally */
+  align-items: center; /* Center children vertically */
+  flex-direction: row; /* Stack children vertically */
+}
 
-.link-button, .button {
+.link-button,
+.button {
   display: inline-block; /* Allows the button to have padding and margin */
   padding: 15px 30px; /* Increased padding for a bigger button */
   margin: 10px; /* Space between buttons */
@@ -132,7 +99,6 @@ p {
 
 /* Specific styles for the link-button to differentiate from other buttons */
 .link-button {
-  background-color: #0d6efd; /* Primary color for link-button */
   color: white; /* Ensures text color is white for visibility */
 }
 
@@ -142,4 +108,46 @@ p {
 
 .button-green {
   background-color: green;
+}
+
+.email-signup-card {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.email-signup-card h1 {
+  font-size: 2em;
+  color: #000;
+  margin-bottom: 0.5em;
+}
+
+.email-signup-card p {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+.email-signup-card button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.email-signup-card button:hover {
+  background-color: #333;
+}
+
+.email-signup-card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.email-signup-card a:hover {
+  text-decoration: underline;
 }

@@ -1,12 +1,8 @@
-import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
 import Navigation from "../inc/navigation";
 import Footer from "../inc/footer";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import "../pagesCSS/HomeCSS.css";
 
-import { Link, NavigationType } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const items = [
@@ -56,13 +52,22 @@ const Home = () => {
         </div>
       </section>
 
-      <Link to="/signin" className="link-button">
-        <button className="button button-red">Sign Up</button>
-      </Link>
+      <div className="email-signup-card">
+        <h1>Want First Dibs?</h1>
+        <p>
+          Join our email list and be the first to know about new limited edition
+          products, material innovations, and lots of other fun updates.
+        </p>
+        <div className="button-row">
+          <Link to="/signin" className="link-button">
+            <button className="button button-red">Sign Up</button>
+          </Link>
 
-      <Link to="/login" className="link-button">
-        <button className="button button-green">Login</button>
-      </Link>
+          <Link to="/login" className="link-button">
+            <button className="button button-green">Login</button>
+          </Link>
+        </div>
+      </div>
 
       <Footer />
     </div>
