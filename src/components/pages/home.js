@@ -8,39 +8,34 @@ const Home = () => {
   const items = [
     {
       id: 1,
-      headline: "Headline",
-      text: "Lorem ipsum dolor sit consectetur adipiscing elit. Alias amet deleniti et fugit iusto nesciunt.",
+      headline: "Upload Brain Scan Image",
+      text: "Upload the brain scan image using the designated upload icon",
     },
     {
       id: 2,
-      headline: "Headline",
-      text: "Lorem ipsum dolor sit consectetur adipiscing elit. Alias amet deleniti et fugit iusto nesciunt.",
+      headline: "Submit for Analysis",
+      text: "Submit the uploaded image to receive results by clicking on the submit icon.",
     },
     {
       id: 3,
-      headline: "Headline",
-      text: "Lorem ipsum dolor sit consectetur adipiscing elit. Alias amet deleniti et fugit iusto nesciunt.",
+      headline: "Store in Blockchain",
+      text: "To ensure future verification, click the icon to add the records to our blockchain.",
     },
   ];
 
   return (
     <div>
       <Navigation />
-      <div>
-        <div className="jumbotron jumbotron-fluid banner1">
-          <p className="fs-2 ban1text">
-            Manage your{" "}
-            <span style={{ color: "blueviolet" }}>data to get results</span> in
-            just one click.
-          </p>
+      <div className="banner">
+        <div className="heading">
+          Blockchain technology offers decentralized, transparent, and immutable
+          record-keeping, ensuring the integrity and security of data. Its
+          services span across various sectors including finance, healthcare,
+          and supply chain, facilitating trust and efficiency in transactions.
+          Through its distributed ledger system, blockchain enables secure data
+          sharing and streamlined processes, revolutionizing traditional
+          systems.
         </div>
-        <img
-          src={require("../images/Ellipse.png")}
-          class="rounded-circle mx-auto d-block homeimg mt-n3"
-        />
-        <br />
-      </div>
-      <section className="sect-3">
         <div className="template">
           {items.map((item) => (
             <div key={item.id} className="card">
@@ -50,11 +45,11 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
+      </div>
 
       <div className="email-signup-card">
-        <h1>Want First Dibs?</h1>
-        <p>
+        <h1 className="heading1">Try our Software</h1>
+        <p className="para">
           Join our email list and be the first to know about new limited edition
           products, material innovations, and lots of other fun updates.
         </p>

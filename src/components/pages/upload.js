@@ -3,8 +3,8 @@ import { sendDataToBackend } from "../inc/apiService";
 import "../pagesCSS/UploadCSS.css";
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button, Modal, Form, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const ImageUploadComponent = () => {
   const navigate = useNavigate();
@@ -53,8 +53,8 @@ const ImageUploadComponent = () => {
   };
 
   const handleCloseModal = () => {
-    fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/addtoblockchain", {
-      // fetch("http://127.0.0.1:8000/addtoblockchain", {
+    // fetch("https://flask-app-hmq66d7qyq-uc.a.run.app/addtoblockchain", {
+    fetch("http://127.0.0.1:8000/addtoblockchain", {
       method: "GET",
     })
       .then((response) => response.json())
@@ -69,61 +69,61 @@ const ImageUploadComponent = () => {
     <>
       <Navigation />
       <div className="testCard">
-        <Form onSubmit={handleSubmit} className="fileUpload">
-          <div class="row">
-            <div class="col-lg">
-              <div class="row-lg">
-                {selectedImage && (
-                  <Image
-                    className="img-preview"
-                    src={selectedImage}
-                    alt="Preview"
-                    thumbnail
-                  />
-                )}
-              </div>
-              <div class="row-lg">
-                <progress
-                  value={progress}
-                  max="100"
-                  label={`${progress}%`}
-                  id="uploadProgress"
-                ></progress>
-              </div>
-            </div>
-            <div class="col-lg">
-              {!selectedImage && (
-                <label className="fileSelect" htmlFor="fileInput">
-                  Upload an Image
-                  <input
-                    type="file"
-                    multiple
-                    className="fileElem"
-                    id="fileInput"
-                    onChange={handleImageChange}
-                    style={{ display: "none" }}
-                  />
-                </label>
-              )}
+  <Form onSubmit={handleSubmit} className="fileUpload">
+    <div className="d-flex align-items-center justify-content-center"> {/* Adjust flex properties */}
+      {/* Image container */}
+      <div className="image-container">
+        {selectedImage ? (
+          <>
+            <Image
+              className="img-preview"
+              src={selectedImage}
+              alt="Preview"
+              thumbnail
+            />
+            <a
+              href="#!"
+              onClick={() => setSelectedImage(null)}
+              className="reupload-link"
+            >
+              Reupload Image
+            </a>
+          </>
+        ) : (
+          <label className="fileSelect" htmlFor="fileInput">
+            Upload an Image
+            <input
+              type="file"
+              multiple
+              className="fileElem"
+              id="fileInput"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
 
-              {selectedImage && (
-                <div>
-                  <a
-                    href="#!"
-                    onClick={() => setSelectedImage(null)}
-                    style={{ display: "block", marginBottom: "10px" }}
-                  >
-                    Reupload Image
-                  </a>
-                  <Button type="submit" className="submitbtn">
-                    Submit
-                  </Button>{" "}
-                </div>
-              )}
-            </div>
-          </div>
-        </Form>
+            />
+          </label>
+        )}
       </div>
+
+      {/* Submit button container */}
+      {selectedImage && (
+        <div className="submit-container ms-3"> {/* Added container for submit button */}
+          <Button type="submit" className="submit-button">
+            Submit
+          </Button>
+        </div>
+      )}
+    </div>
+    <progress
+      value={progress}
+      max="100"
+      label={`${progress}%`}
+      id="uploadProgress"
+      className="w-100 mt-3"
+    ></progress>
+  </Form>
+</div>
+
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header>
           <Modal.Title>Image Classification Result</Modal.Title>

@@ -85,7 +85,7 @@ function Login() {
                 <div className="mb-3">
                   <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="email text-center">
+                      <Form.Label className="email">
                         Email address
                       </Form.Label>
                       <Form.Control

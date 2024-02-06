@@ -54,7 +54,7 @@ function Footer() {
                 </small>
               </div>
             </div>
-            <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end ">
+            {/* <div className="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end ">
               <a
                 href="https://www.linkedin.com/company/block-convey-llc
       "
@@ -77,7 +77,7 @@ function Footer() {
               >
                 <i className="fa fa-instagram" style={{ fontSize: 36 }} />
               </a>
-            </div>
+            </div> */}
           </div>
         </section>
       </div>

@@ -45,6 +45,18 @@ body{
   background-position: 0 -15px;
 }
 
+.reupload-link {
+  display: block;
+  margin-top: 10px;
+}
+
+.fileSelect {
+  cursor: pointer;
+  display: inline-block; 
+  top: 20px;
+  left: 100px;
+}
+
 .fileUpload h4 {
   font-size: 12px;
   font-weight: normal;
@@ -147,11 +159,17 @@ padding-left: 0.1rem;
   background-color: #F4CB83 !important;
   border-color:#F4CB83 !important;
   color: #F4CB83 !important;
+
+}
+
+.testCard {
+  display: flex;
+  flex-direction: column; /* Stack the children vertically */
 }
 
 .img-preview {
   width: 300px;  /* predefined width */
   height: 100px; /* predefined height */
   object-fit: cover; /* this will cover the area without breaking the aspect ratio */
+  padding: 0%;
 }
-	
