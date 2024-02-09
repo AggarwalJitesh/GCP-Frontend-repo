@@ -1,6 +1,6 @@
 // components import
 import Navigation from "../inc/navigation";
-import Accordion from "./Accordion"; 
+import Accordion from "./Accordion";
 import { fetchDataFromBackend } from "../inc/api_GETservice";
 import { sendDataToBackend } from "../inc/apiService";
 
@@ -9,14 +9,26 @@ import "../pagesCSS/UploadCSS.css";
 import "../pagesCSS/DashboardCSS.css";
 
 // React hooks import
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // bootsrap import
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Modal, Form, Image } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
+// dropzone
+import { useDropzone } from "react-dropzone";
+import Lottie from "react-lottie";
+import animationData1 from "/Users/jiteshaggarwal/Desktop/frontend/src/components/images/upload.json";
+import "/Users/jiteshaggarwal/Desktop/frontend/src/components/pagesCSS/UploadCSS.css";
+
+const defaultOptions1 = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData1,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 const Dashboard = () => {
   // catch user id
@@ -26,65 +38,70 @@ const Dashboard = () => {
   // naviagte
   const navigate = useNavigate();
 
-  /////////////////////////////////////////
   // upload image perticular
-  const [selectedImage, setSelectedImage] = useState(null); // img url dor preview
-  const [selectedFile, setSelectedFile] = useState(null); // file to be sent too backend
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [files, setFiles] = useState([]);
 
-  const [result, setResult] = useState(null); // keeps the classified result
+  const [result, setResult] = useState(null);
 
-  const [progress, setProgress] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  // const items = [{ lottieOptions: defaultOptions1 }];
+  // const [analyzing, setAnalyzing] = useState(false);
 
+  const [imageUploaded, setImageUploaded] = useState(false);
+  const [classificationResult, setClassificationResult] = useState(false);
 
+  // handle image change
 
-  // handle image change 
-  const handleImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setSelectedImage(URL.createObjectURL(event.target.files[0]));
-      setSelectedFile(event.target.files[0]);
-    } else {
-      setSelectedImage(null);
+  const onDrop = useCallback((acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file && file.type.startsWith("image/")) {
+      setSelectedImage(file);
+      setImageUploaded(true);
+      setFiles([
+        {
+          ...file,
+          preview: URL.createObjectURL(file),
+        },
+      ]);
     }
-  };
-
+  }, []);
 
   // handle submit
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setProgress(0);
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress === 100) {
-          clearInterval(interval);
-          setShowModal(true);
-          return 100;
-        }
-        return Math.min(prevProgress + 10, 100);
-      });
-    }, 200);
+    // setAnalyzing(true);
 
     //send upload image too backend
     const formData = new FormData();
-    formData.append("image", selectedFile);
+    formData.append("image", selectedImage);
 
     const endpointPath = "classify";
 
     try {
       const data = await sendDataToBackend(endpointPath, formData);
       setResult(data.message);
+      setClassificationResult(true);
     } catch (error) {
       console.error("Failed to send data:", error);
     }
   };
 
-  const handleCloseModal = async (e) => {
+  const handleCancel = () => {
+    // // setAnalyzing(false); // Show the Analyze Image button againsetAnalyzing
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    multiple: false,
+  });
+
+  const handleAddtoBlockchain = async (e) => {
     const endpointPath = "addtoblockchain";
 
     try {
       const data = await fetchDataFromBackend(endpointPath);
       alert(data.message);
-      setShowModal(false);
       window.location.reload();
     } catch (error) {
       console.error("Failed to send data:", error);
@@ -108,7 +125,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async (e) => {
-      
       const endpointPath = "transaction";
       try {
         const data = await fetchDataFromBackend(endpointPath);
@@ -137,80 +153,53 @@ const Dashboard = () => {
       <div className="mb-4">
         <h2 className="dash">DASHBOARD</h2>
         <Navigation />
-        {/* <h1>Welcome,{userid}</h1> */}
-        <h1>Welcome, userid</h1>
+        <h1>Welcome,{userid}</h1>
         <button onClick={handleLogout}>Logout</button>
       </div>
-      {/* ///////////////////////////////////////// */}
-      <div className="testCard">
-        <Form onSubmit={handleSubmit} className="fileUpload">
-          <div className="d-flex align-items-center justify-content-center">
-            {" "}
-            {/* Adjust flex properties */}
-            {/* Image container */}
-            <div className="image-container">
-              {selectedImage ? (
-                <>
-                  <Image
-                    className="img-preview"
-                    src={selectedImage}
-                    alt="Preview"
-                    thumbnail
-                  />
-                  <a
-                    href="#!"
-                    onClick={() => setSelectedImage(null)}
-                    className="reupload-link"
-                  >
-                    Reupload Image
-                  </a>
-                </>
-              ) : (
-                <label className="fileSelect" htmlFor="fileInput">
-                  Upload an Image
-                  <input
-                    type="file"
-                    multiple
-                    className="fileElem"
-                    id="fileInput"
-                    onChange={handleImageChange}
-                    style={{ display: "none" }}
-                  />
-                </label>
-              )}
+
+      <div className="upload-container">
+        <div
+          {...getRootProps()}
+          className={`dropzone ${isDragActive ? "active" : ""} ${
+            imageUploaded ? "slide-out" : ""
+          }`}
+        >
+          <Lottie options={defaultOptions1} height={300} width={300} />
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop the images here ...</p>
+          ) : (
+            <p>Drag 'n' drop some images here, or click to select images</p>
+          )}
+          {/* Conditionally render the Analyze Image button right below the dropzone text */}
+          {files.length > 0 && (
+            <div>
+              <button onClick={handleSubmit} className="submit-button">
+                Analyze Image
+              </button>
             </div>
-            {/* Submit button container */}
-            {selectedImage && (
-              <div className="submit-container ms-3">
-                {" "}
-                {/* Added container for submit button */}
-                <Button type="submit" className="submit-button">
-                  Submit
-                </Button>
-              </div>
-            )}
+          )}
+        </div>
+        {files.map((file) => (
+          <div
+            key={file.name}
+            className={`preview-image image-preview ${
+              classificationResult ? "move-left" : ""
+            }`}
+          >
+            <img src={file.preview} alt="Preview" />
+            <p>{file.name}</p>
           </div>
-          <progress
-            value={progress}
-            max="100"
-            label={`${progress}%`}
-            id="uploadProgress"
-            className="w-100 mt-3"
-          ></progress>
-        </Form>
+        ))}
+        {classificationResult && (
+          <div className="classification-result slide-in">
+            <h1>{result}</h1>
+            <button onClick={handleAddtoBlockchain}>Add to Blockchain</button>
+            
+          </div>
+        )}
       </div>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header>
-          <Modal.Title>Image Classification Result</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{result}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleCloseModal}>
-            Add to Blockchain
-          </Button>
-        </Modal.Footer>
-      </Modal>
       {/* /////////////////////////////////////////// */}
       <div className="App">
         <h2>Data Accordion</h2>
