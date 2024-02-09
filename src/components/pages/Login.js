@@ -66,7 +66,9 @@ function Login() {
       );
       if (responseData.message === "User Authenticated") {
         alert(responseData.message);
-        navigate("/upload");
+        // navigate("/upload");
+        navigate(`/dashboard?userid=${responseData.userid}`);
+        window.location.reload();
       }
     } catch (error) {
       console.error("Failed login:", error);

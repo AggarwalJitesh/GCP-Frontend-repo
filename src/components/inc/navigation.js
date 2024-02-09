@@ -11,13 +11,8 @@ function Navigation() {
           height="30"
           className="d-inline-block align-top"
         />
-        <Link
-          to="/"
-          className="text-white navbar-brand navtext"
-          style={{ textDecoration: "none" }}
-        >
-          Demo
-        </Link>
+        <h3 className="text-white navbar-brand navtext">Demo</h3>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -36,11 +31,11 @@ function Navigation() {
                 Dashboard
               </Link>
             </li> */}
-            <li className="nav-item ">
+            {/* <li className="nav-item ">
               <Link to="/upload" className="nav-link text-white">
                 Upload Image
               </Link>
-            </li>
+            </li> */}
             {/* <li className="nav-item ">
               <Link to="/login" className="nav-link text-white">
                 Log In

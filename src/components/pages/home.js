@@ -30,21 +30,22 @@ const Home = () => {
         <div className="heading">
           Blockchain technology offers decentralized, transparent, and immutable
           record-keeping, ensuring the integrity and security of data. Its
-          services span across various sectors including finance, healthcare,
-          and supply chain, facilitating trust and efficiency in transactions.
-          Through its distributed ledger system, blockchain enables secure data
-          sharing and streamlined processes, revolutionizing traditional
-          systems.
+          services span across vario
         </div>
-        <div className="template">
-          {items.map((item) => (
-            <div key={item.id} className="card">
-              <div className={`circle circle-${item.id}`}>{item.id}</div>
-              <h2>{item.headline}</h2>
-              <p>{item.text}</p>
-            </div>
-          ))}
+        <div className="imagesection">
+          <img
+            src={require("/Users/jiteshaggarwal/Desktop/frontend/src/components/images/img1.jpg")}
+          />
         </div>
+      </div>
+      <div className="template">
+        {items.map((item) => (
+          <div key={item.id} className="card">
+            <div className={`circle circle-${item.id}`}>{item.id}</div>
+            <h2>{item.headline}</h2>
+            <p>{item.text}</p>
+          </div>
+        ))}
       </div>
 
       <div className="email-signup-card">

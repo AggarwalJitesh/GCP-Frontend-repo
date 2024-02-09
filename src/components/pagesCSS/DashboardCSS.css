@@ -11,6 +11,9 @@
   position: relative;
   font-family: Tahoma, Verdana, sans-serif;
 }
+.App{
+  color: aliceblue;
+}
 
 .dash {
   text-align: center;
@@ -86,3 +89,5 @@ table {
   border-collapse: collapse;
   table-layout: auto; 
 }  */
+
+
