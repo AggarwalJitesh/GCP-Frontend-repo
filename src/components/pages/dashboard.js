@@ -137,8 +137,8 @@ const Dashboard = () => {
       <div className="mb-4">
         <h2 className="dash">DASHBOARD</h2>
         <Navigation />
-        <h1>Welcome,{userid}</h1>
-
+        {/* <h1>Welcome,{userid}</h1> */}
+        <h1>Welcome, userid</h1>
         <button onClick={handleLogout}>Logout</button>
       </div>
       {/* ///////////////////////////////////////// */}
